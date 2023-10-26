@@ -1,0 +1,113 @@
+html {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    min-height: 80vh;
+}
+
+body {
+    margin: 0;
+}
+
+
+.total-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: black;
+
+    min-height: 100vh;
+    min-width: 50vh;
+}
+
+.row-1-display,
+.row-2,
+.row-3,
+.row-4,
+.row-5,
+.row-6 {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.clear-btn,
+.neg-sign-btn,
+.percent-btn,
+.division-btn,
+.seven-btn,
+.eight-btn,
+.nine-btn,
+.mult-btn,
+.four-btn,
+.five-btn,
+.six-btn,
+.subtract-btn,
+.one-btn,
+.two-btn,
+.three-btn,
+.add-btn,
+.decimal-btn,
+.equal-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.division-btn,
+.mult-btn,
+.subtract-btn,
+.add-btn,
+.equal-btn {
+    background-color: rgb(242, 166, 66);
+    color: white;
+}
+
+
+.clear-btn,
+.neg-sign-btn,
+.percent-btn {
+    background-color: rgb(165,165,165);
+}
+
+.seven-btn,
+.eight-btn,
+.nine-btn,
+.four-btn,
+.five-btn,
+.six-btn,
+.one-btn,
+.two-btn,
+.three-btn,
+.decimal-btn,
+.zero-btn-dblwide {
+    background-color: rgb(51,51,51);
+    color: white;
+}
+
+.zero-btn-dblwide {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left:13.5px;
+    width: 80px;
+    height: 40px;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.row-1-display {
+    display: flex;
+    justify-content: right;
+    padding-right: 5px;
+    width: 175px;
+    color: white;
+    font-size: 30px;
+
+    overflow: hidden;
+}
