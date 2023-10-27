@@ -218,17 +218,17 @@
                 displayBoxArray.splice((i + 1), 1);
                 displayBoxArray.splice((i - 1), 1);
                 i = 0;
-            } else if (displayBoxArray[i] == '÷') {
+            } else if (displayBoxArray[i] == '÷' && displayBoxArray[i-2] !== '×' && displayBoxArray[i+2] !== '×') {
                 displayBoxArray[i] = divide(displayBoxArray, i);
                 displayBoxArray.splice((i + 1), 1);
                 displayBoxArray.splice((i - 1), 1);
                 i = 0;
-            } else if (displayBoxArray[i] == '+') {
+            } else if (displayBoxArray[i] == '+' && displayBoxArray[i-2] !== '×' && displayBoxArray[i+2] !== '×' && displayBoxArray[i-2] !== '÷' && displayBoxArray[i+2] !== '÷') {
                 displayBoxArray[i] = add(displayBoxArray, i);
                 displayBoxArray.splice((i + 1), 1);
                 displayBoxArray.splice((i - 1), 1);
                 i = 0;
-            } else if (displayBoxArray[i] == '-') {
+            } else if (displayBoxArray[i] == '-' && displayBoxArray[i-2] !== '×' && displayBoxArray[i+2] !== '×' && displayBoxArray[i-2] !== '÷' && displayBoxArray[i+2] !== '÷' && displayBoxArray[i-2] !== '+' && displayBoxArray[i+2] !== '+') {
                 displayBoxArray[i] = subtract(displayBoxArray, i);
                 displayBoxArray.splice((i + 1), 1);
                 displayBoxArray.splice((i - 1), 1);
