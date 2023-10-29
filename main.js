@@ -209,53 +209,66 @@
     function runCalc() {
         let displayBox = document.querySelector('.row-1-display');
         let displayBoxArray = displayBox.innerText.split('');
+       
+        for (let j = displayBoxArray.length-1; j >= 0; j--) {
+            if (displayBoxArray[j] == '×') {
+                displayBoxArray.splice(j, 1, ',×,');
+            } else if (displayBoxArray[j] == '÷') {
+                displayBoxArray.splice(j, 1, ',÷,');
+            } else if (displayBoxArray[j] == '+') {
+                displayBoxArray.splice(j, 1, ',+,');
+            } else if (displayBoxArray[j] == '-') {
+                displayBoxArray.splice(j, 1, ',-,');
+            }
+        }
+            let displayBoxJoined = displayBoxArray.join('');
+            let displayBoxArrayFS = displayBoxJoined.split(',');
 
 
-
-        for (let i = 0; i <= displayBoxArray.length - 1; i++) {
-            if (displayBoxArray[i] == '×') {
-                displayBoxArray[i] = multiply(displayBoxArray, i);
-                displayBoxArray.splice((i + 1), 1);
-                displayBoxArray.splice((i - 1), 1);
+        for (let i = 0; i <= displayBoxArrayFS.length - 1; i++) {
+            if (displayBoxArrayFS[i] == '×') {
+                displayBoxArrayFS[i] = multiply(displayBoxArrayFS, i);
+                displayBoxArrayFS.splice((i + 1), 1);
+                displayBoxArrayFS.splice((i - 1), 1);
                 i = 0;
-            } else if (displayBoxArray[i] == '÷' && displayBoxArray[i-2] !== '×' && displayBoxArray[i+2] !== '×') {
-                displayBoxArray[i] = divide(displayBoxArray, i);
-                displayBoxArray.splice((i + 1), 1);
-                displayBoxArray.splice((i - 1), 1);
+            } else if (displayBoxArrayFS[i] == '÷' && displayBoxArrayFS[i-2] !== '×' && displayBoxArrayFS[i+2] !== '×') {
+                displayBoxArrayFS[i] = divide(displayBoxArrayFS, i);
+                displayBoxArrayFS.splice((i + 1), 1);
+                displayBoxArrayFS.splice((i - 1), 1);
                 i = 0;
-            } else if (displayBoxArray[i] == '+' && displayBoxArray[i-2] !== '×' && displayBoxArray[i+2] !== '×' && displayBoxArray[i-2] !== '÷' && displayBoxArray[i+2] !== '÷') {
-                displayBoxArray[i] = add(displayBoxArray, i);
-                displayBoxArray.splice((i + 1), 1);
-                displayBoxArray.splice((i - 1), 1);
+            } else if (displayBoxArrayFS[i] == '+' && displayBoxArrayFS[i-2] !== '×' && displayBoxArrayFS[i+2] !== '×' && displayBoxArrayFS[i-2] !== '÷' && displayBoxArrayFS[i+2] !== '÷') {
+                displayBoxArrayFS[i] = add(displayBoxArrayFS, i);
+                displayBoxArrayFS.splice((i + 1), 1);
+                displayBoxArrayFS.splice((i - 1), 1);
                 i = 0;
-            } else if (displayBoxArray[i] == '-' && displayBoxArray[i-2] !== '×' && displayBoxArray[i+2] !== '×' && displayBoxArray[i-2] !== '÷' && displayBoxArray[i+2] !== '÷' && displayBoxArray[i-2] !== '+' && displayBoxArray[i+2] !== '+') {
-                displayBoxArray[i] = subtract(displayBoxArray, i);
-                displayBoxArray.splice((i + 1), 1);
-                displayBoxArray.splice((i - 1), 1);
+            } else if (displayBoxArrayFS[i] == '-' && displayBoxArrayFS[i-2] !== '×' && displayBoxArrayFS[i+2] !== '×' && displayBoxArrayFS[i-2] !== '÷' && displayBoxArrayFS[i+2] !== '÷' && displayBoxArrayFS[i-2] !== '+' && displayBoxArrayFS[i+2] !== '+') {
+                displayBoxArrayFS[i] = subtract(displayBoxArrayFS, i);
+                displayBoxArrayFS.splice((i + 1), 1);
+                displayBoxArrayFS.splice((i - 1), 1);
                 i = 0;
 
             }
 
         }
 
-        displayBox.innerText = displayBoxArray;
+        displayBox.innerText = displayBoxArrayFS;
 
 
         //Operations
-            function multiply(displayBoxArray, i) {
-                return (parseInt(displayBoxArray[i - 1]) * parseInt(displayBoxArray[i + 1]));
+            function multiply(displayBoxArrayFS, i) {
+                return (parseInt(displayBoxArrayFS[i - 1]) * parseInt(displayBoxArrayFS[i + 1]));
             }
 
-            function divide(displayBoxArray, i) {
-                return (parseInt(displayBoxArray[i - 1]) / parseInt(displayBoxArray[i + 1]));
+            function divide(displayBoxArrayFS, i) {
+                return (parseInt(displayBoxArrayFS[i - 1]) / parseInt(displayBoxArrayFS[i + 1]));
             }
 
-            function add(displayBoxArray, i) {
-                return (parseInt(displayBoxArray[i - 1])) + (parseInt(displayBoxArray[i + 1]));
+            function add(displayBoxArrayFS, i) {
+                return (parseInt(displayBoxArrayFS[i - 1])) + (parseInt(displayBoxArrayFS[i + 1]));
             }
 
-            function subtract(displayBoxArray, i) {
-                return (parseInt(displayBoxArray[i - 1])) - (parseInt(displayBoxArray[i + 1]));
+            function subtract(displayBoxArrayFS, i) {
+                return (parseInt(displayBoxArrayFS[i - 1])) - (parseInt(displayBoxArrayFS[i + 1]));
             }
     }
     
