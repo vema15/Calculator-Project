@@ -256,19 +256,19 @@
 
         //Operations
             function multiply(displayBoxArrayFS, i) {
-                return (parseInt(displayBoxArrayFS[i - 1]) * parseInt(displayBoxArrayFS[i + 1]));
+                return (parseFloat(displayBoxArrayFS[i - 1]) * parseFloat(displayBoxArrayFS[i + 1]));
             }
 
             function divide(displayBoxArrayFS, i) {
-                return (parseInt(displayBoxArrayFS[i - 1]) / parseInt(displayBoxArrayFS[i + 1]));
+                return (parseFloat(displayBoxArrayFS[i - 1]) / parseFloat(displayBoxArrayFS[i + 1]));
             }
 
             function add(displayBoxArrayFS, i) {
-                return (parseInt(displayBoxArrayFS[i - 1])) + (parseInt(displayBoxArrayFS[i + 1]));
+                return (parseFloat(displayBoxArrayFS[i - 1])) + (parseFloat(displayBoxArrayFS[i + 1]));
             }
 
             function subtract(displayBoxArrayFS, i) {
-                return (parseInt(displayBoxArrayFS[i - 1])) - (parseInt(displayBoxArrayFS[i + 1]));
+                return (parseFloat(displayBoxArrayFS[i - 1])) - (parseFloat(displayBoxArrayFS[i + 1]));
             }
     }
     
