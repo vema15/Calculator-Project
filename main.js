@@ -222,11 +222,7 @@
             }
         }
             let displayBoxJoined = displayBoxArray.join('');
-            console.log(displayBoxJoined);
-
-         
             let displayBoxArrayFS = displayBoxJoined.split(',');
-            console.log(displayBoxArrayFS);
 
         for (let i = 0; i <= displayBoxArrayFS.length - 1; i++) {
             if (displayBoxArrayFS[i] == '×') {
@@ -252,7 +248,14 @@
             } 
         }
 
+        console.log(displayBoxArrayFS[0]);
+        let displayBoxArrayFSS = displayBoxArrayFS.toString();
+        if (displayBoxArrayFSS.length >= 10) {
+            let expontentialDisplayBAFS = parseFloat(displayBoxArrayFS).toExponential(2);
+            displayBox.innerText = expontentialDisplayBAFS;
+        } else {
             displayBox.innerText = displayBoxArrayFS;
+        }
 
 
         //Operations
