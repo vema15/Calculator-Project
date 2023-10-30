@@ -199,8 +199,6 @@
         }
     }
 
-
-
     //Operation Function
 
     let equalBtn = document.querySelector('.equal-btn');
@@ -217,7 +215,7 @@
                 displayBoxArray.splice(j, 1, ',÷,');
             } else if (displayBoxArray[j] == '+') {
                 displayBoxArray.splice(j, 1, ',+,');
-            } else if (displayBoxArray[j] == '-') {
+            } else if (displayBoxArray[j] == '-' && j !== 0) {
                 displayBoxArray.splice(j, 1, ',-,');
             }
         }
@@ -246,12 +244,10 @@
                 displayBoxArrayFS.splice((i + 1), 1);
                 displayBoxArrayFS.splice((i - 1), 1);
                 i = 0;
-
             }
-
         }
 
-        displayBox.innerText = displayBoxArrayFS;
+            displayBox.innerText = displayBoxArrayFS;
 
 
         //Operations
@@ -270,5 +266,6 @@
             function subtract(displayBoxArrayFS, i) {
                 return (parseFloat(displayBoxArrayFS[i - 1])) - (parseFloat(displayBoxArrayFS[i + 1]));
             }
+
     }
     
