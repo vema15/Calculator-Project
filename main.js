@@ -56,10 +56,6 @@
     let negButton = document.querySelector('.neg-sign-btn');
     negButton.addEventListener('click', appendNegative);
 
-
-
-
-
 //Append Numbers
     function appendZero() {
         let displayBox = document.querySelector('.row-1-display');
@@ -172,12 +168,10 @@
         displayBox.innerText += '÷';
     }
 
-
 //Append Functional Buttons
     function clear() {
         let displayBox = document.querySelector('.row-1-display');
         displayBox.innerText = 0;
-
     }
 
     function appendDecimal() {
@@ -200,64 +194,62 @@
     }
 
     //Operation Function
-
-    let equalBtn = document.querySelector('.equal-btn');
-    equalBtn.addEventListener('click', runCalc);
-
-    function runCalc() {
-        let displayBox = document.querySelector('.row-1-display');
-        let displayBoxArray = displayBox.innerText.split('');
-       
-        for (let j = displayBoxArray.length-1; j >= 0; j--) {
-            if (displayBoxArray[j] == '×') {
-                displayBoxArray.splice(j, 1, ',×,');
-            } else if (displayBoxArray[j] == '÷') {
-                displayBoxArray.splice(j, 1, ',÷,');
-            } else if (displayBoxArray[j] == '+') {
-                displayBoxArray.splice(j, 1, ',+,');
-            } else if (displayBoxArray[j] == '-' && j !== 0) {
-                displayBoxArray.splice(j, 1, ',-,');
-            } else if (displayBoxArray[j] == '%') {
-                displayBoxArray.splice(j,1, `,×,0.01`); 
+        let equalBtn = document.querySelector('.equal-btn');
+        equalBtn.addEventListener('click', runCalc);
+        
+        function runCalc() {
+            let displayBox = document.querySelector('.row-1-display');
+            let displayBoxArray = displayBox.innerText.split('');
+            
+            for (let j = displayBoxArray.length-1; j >= 0; j--) {
+                if (displayBoxArray[j] == '×') {
+                    displayBoxArray.splice(j, 1, ',×,');
+                } else if (displayBoxArray[j] == '÷') {
+                    displayBoxArray.splice(j, 1, ',÷,');
+                } else if (displayBoxArray[j] == '+') {
+                    displayBoxArray.splice(j, 1, ',+,');
+                } else if (displayBoxArray[j] == '-' && j !== 0) {
+                    displayBoxArray.splice(j, 1, ',-,');
+                } else if (displayBoxArray[j] == '%') {
+                    displayBoxArray.splice(j,1, `,×,0.01`); 
+                }
             }
-        }
-            let displayBoxJoined = displayBoxArray.join('');
-            let displayBoxArrayFS = displayBoxJoined.split(',');
+                let displayBoxJoined = displayBoxArray.join('');
+                let displayBoxArrayFS = displayBoxJoined.split(',');
 
-        for (let i = 0; i <= displayBoxArrayFS.length - 1; i++) {
-            if (displayBoxArrayFS[i] == '×') {
-                displayBoxArrayFS[i] = multiply(displayBoxArrayFS, i);
-                displayBoxArrayFS.splice((i + 1), 1);
-                displayBoxArrayFS.splice((i - 1), 1);
-                i = 0;
-            } else if (displayBoxArrayFS[i] == '÷' && displayBoxArrayFS[i-2] !== '×' && displayBoxArrayFS[i+2] !== '×') {
-                displayBoxArrayFS[i] = divide(displayBoxArrayFS, i);
-                displayBoxArrayFS.splice((i + 1), 1);
-                displayBoxArrayFS.splice((i - 1), 1);
-                i = 0;
-            } else if (displayBoxArrayFS[i] == '+' && displayBoxArrayFS[i-2] !== '×' && displayBoxArrayFS[i+2] !== '×' && displayBoxArrayFS[i-2] !== '÷' && displayBoxArrayFS[i+2] !== '÷') {
-                displayBoxArrayFS[i] = add(displayBoxArrayFS, i);
-                displayBoxArrayFS.splice((i + 1), 1);
-                displayBoxArrayFS.splice((i - 1), 1);
-                i = 0;
-            } else if (displayBoxArrayFS[i] == '-' && displayBoxArrayFS[i-2] !== '×' && displayBoxArrayFS[i+2] !== '×' && displayBoxArrayFS[i-2] !== '÷' && displayBoxArrayFS[i+2] !== '÷' && displayBoxArrayFS[i-2] !== '+' && displayBoxArrayFS[i+2] !== '+') {
-                displayBoxArrayFS[i] = subtract(displayBoxArrayFS, i);
-                displayBoxArrayFS.splice((i + 1), 1);
-                displayBoxArrayFS.splice((i - 1), 1);
-                i = 0;
-            } 
-        }
+            for (let i = 0; i <= displayBoxArrayFS.length - 1; i++) {
+                if (displayBoxArrayFS[i] == '×') {
+                    displayBoxArrayFS[i] = multiply(displayBoxArrayFS, i);
+                    displayBoxArrayFS.splice((i + 1), 1);
+                    displayBoxArrayFS.splice((i - 1), 1);
+                    i = 0;
+                } else if (displayBoxArrayFS[i] == '÷' && displayBoxArrayFS[i-2] !== '×' && displayBoxArrayFS[i+2] !== '×') {
+                    displayBoxArrayFS[i] = divide(displayBoxArrayFS, i);
+                    displayBoxArrayFS.splice((i + 1), 1);
+                    displayBoxArrayFS.splice((i - 1), 1);
+                    i = 0;
+                } else if (displayBoxArrayFS[i] == '+' && displayBoxArrayFS[i-2] !== '×' && displayBoxArrayFS[i+2] !== '×' && displayBoxArrayFS[i-2] !== '÷' && displayBoxArrayFS[i+2] !== '÷') {
+                    displayBoxArrayFS[i] = add(displayBoxArrayFS, i);
+                    displayBoxArrayFS.splice((i + 1), 1);
+                    displayBoxArrayFS.splice((i - 1), 1);
+                    i = 0;
+                } else if (displayBoxArrayFS[i] == '-' && displayBoxArrayFS[i-2] !== '×' && displayBoxArrayFS[i+2] !== '×' && displayBoxArrayFS[i-2] !== '÷' && displayBoxArrayFS[i+2] !== '÷' && displayBoxArrayFS[i-2] !== '+' && displayBoxArrayFS[i+2] !== '+') {
+                    displayBoxArrayFS[i] = subtract(displayBoxArrayFS, i);
+                    displayBoxArrayFS.splice((i + 1), 1);
+                    displayBoxArrayFS.splice((i - 1), 1);
+                    i = 0;
+                } 
+            }
 
-        console.log(displayBoxArrayFS[0]);
-        let displayBoxArrayFSS = displayBoxArrayFS.toString();
-        if (displayBoxArrayFSS.length >= 10) {
-            let expontentialDisplayBAFS = parseFloat(displayBoxArrayFS).toExponential(2);
-            displayBox.innerText = expontentialDisplayBAFS;
-        } else {
-            displayBox.innerText = displayBoxArrayFS;
-        }
+        //Display Content
+            let displayBoxArrayFSS = displayBoxArrayFS.toString();
+            if (displayBoxArrayFSS.includes('e')) {
+                displayBox.innerText = 'Overflow Error';
+            } else {
+                displayBox.innerText = displayBoxArrayFS;
+            }
 
-
+            
         //Operations
             function multiply(displayBoxArrayFS, i) {
                 return (parseFloat(displayBoxArrayFS[i - 1]) * parseFloat(displayBoxArrayFS[i + 1]));
@@ -274,11 +266,5 @@
             function subtract(displayBoxArrayFS, i) {
                 return (parseFloat(displayBoxArrayFS[i - 1])) - (parseFloat(displayBoxArrayFS[i + 1]));
             }
-
-            function percent(displayBoxJoined, i) {
-                return 0.01 * (displayBoxJoined[i-1]);
-            }
-
-
     }
     
