@@ -217,11 +217,16 @@
                 displayBoxArray.splice(j, 1, ',+,');
             } else if (displayBoxArray[j] == '-' && j !== 0) {
                 displayBoxArray.splice(j, 1, ',-,');
+            } else if (displayBoxArray[j] == '%') {
+                displayBoxArray.splice(j,1, `,×,0.01`); 
             }
         }
             let displayBoxJoined = displayBoxArray.join('');
-            let displayBoxArrayFS = displayBoxJoined.split(',');
+            console.log(displayBoxJoined);
 
+         
+            let displayBoxArrayFS = displayBoxJoined.split(',');
+            console.log(displayBoxArrayFS);
 
         for (let i = 0; i <= displayBoxArrayFS.length - 1; i++) {
             if (displayBoxArrayFS[i] == '×') {
@@ -244,7 +249,7 @@
                 displayBoxArrayFS.splice((i + 1), 1);
                 displayBoxArrayFS.splice((i - 1), 1);
                 i = 0;
-            }
+            } 
         }
 
             displayBox.innerText = displayBoxArrayFS;
@@ -266,6 +271,11 @@
             function subtract(displayBoxArrayFS, i) {
                 return (parseFloat(displayBoxArrayFS[i - 1])) - (parseFloat(displayBoxArrayFS[i + 1]));
             }
+
+            function percent(displayBoxJoined, i) {
+                return 0.01 * (displayBoxJoined[i-1]);
+            }
+
 
     }
     
